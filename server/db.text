@@ -1,0 +1,17 @@
+Create Database Home_IOT character set UTF8;
+
+Create Table MoistureSensor(
+        ID int Not Null Primary Key Auto_Increment,
+        Moisture int,
+        Date datetime
+);
+
+Create Table BME280Sensor(
+        ID int Not Null Primary Key Auto_Increment,
+        Temp int,
+        Pressure int,
+	Humidity int,
+	Date datetime
+);
+
+
