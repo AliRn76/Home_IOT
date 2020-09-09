@@ -12,6 +12,9 @@ class Bme280Sensor(models.Model):
         managed = False
         db_table = 'BME280Sensor'
 
+    def __str__(self):
+        return "Temp:" + str(self.temp) + " - Pressure:" + str(self.pressure) + " - Humidity:" + str(self.humidity)
+
 
 class MoistureSensor(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
@@ -21,3 +24,6 @@ class MoistureSensor(models.Model):
     class Meta:
         managed = False
         db_table = 'MoistureSensor'
+
+    def __str__(self):
+        return "Moisture:" + str(self.moisture)
