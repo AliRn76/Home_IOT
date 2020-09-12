@@ -1,3 +1,5 @@
+from django.shortcuts import render
+
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -38,6 +40,10 @@ class DataAPIView(APIView):
         bme280_all = Bme280Sensor.objects.all().order_by('-date')
         serializer = DataSerializers(bme280_all, many=True)
         return Response(data=serializer.data, status=status.HTTP_202_ACCEPTED)
+
+def thread_view(request):
+    return render(request, "main.html", {})
+
 
 
 

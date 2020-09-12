@@ -27,3 +27,7 @@ class MoistureSensor(models.Model):
 
     def __str__(self):
         return "Moisture:" + str(self.moisture)
+
+    def lastone(self):
+        last = self.objects.all()
+        return last.last()
