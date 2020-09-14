@@ -9,7 +9,7 @@ class Bme280Sensor(models.Model):
     date = models.DateTimeField(db_column='Date', blank=True, null=True, auto_now=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'BME280Sensor'
 
     def __str__(self):
@@ -22,7 +22,7 @@ class MoistureSensor(models.Model):
     date = models.DateTimeField(db_column='Date', blank=True, null=True, auto_now=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'MoistureSensor'
 
     def __str__(self):
