@@ -12,14 +12,15 @@ class MoistureSensorConsumer(AsyncConsumer):
         await self.send({
             "type": "websocket.accept",
         })
-        await asyncio.sleep(1)
-        moist_obj = await self.get_last()
-        print(moist_obj)
-        await self.send({
-            "type": "websocket.send",
-            # "text": "Hello World",
-            "text": str(moist_obj.moisture),
-        })
+        while True:
+            moist_obj = await self.get_last()
+            print(moist_obj)
+            await self.send({
+                "type": "websocket.send",
+                # "text": "Hello World",
+                "text": str(moist_obj.moisture),
+            })
+            asyncio.sleep(2)
 
     async def websocket_receive(self, event):
         print("receive", event)
