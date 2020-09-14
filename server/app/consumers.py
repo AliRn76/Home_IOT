@@ -14,12 +14,17 @@ class MoistureSensorConsumer(AsyncConsumer):
         })
 
         while True:
-            moist_obj = await self.get_last()
-            print(moist_obj)
+            moist_obj = await self.last_moisture()
+            bme_obj = await self.last_bme280()
+            data = {
+                "moisture": moist_obj.moisture,
+                "temp": bme_obj.temp,
+                "pressure": bme_obj.pressure,
+                "humidity": bme_obj.humidity,
+            }
             await self.send({
                 "type": "websocket.send",
-                # "text": "Hello World",
-                "text": str(moist_obj.moisture),
+                "text": json.dumps(data),
             })
             await asyncio.sleep(2)
 
@@ -30,5 +35,9 @@ class MoistureSensorConsumer(AsyncConsumer):
         print("disconnect", event)
 
     @database_sync_to_async
-    def get_last(self):
+    def last_moisture(self):
         return MoistureSensor.objects.all().last()
+
+    @database_sync_to_async
+    def last_bme280(self):
+        return Bme280Sensor.objects.all().last()
