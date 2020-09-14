@@ -26,7 +26,7 @@ class MoistureSensorConsumer(AsyncConsumer):
                 "type": "websocket.send",
                 "text": json.dumps(data),
             })
-            await asyncio.sleep(2)
+            await asyncio.sleep(1)
 
     async def websocket_receive(self, event):
         print("receive", event)

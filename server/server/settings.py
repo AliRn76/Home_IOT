@@ -83,7 +83,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Home_IOT',
-        'USER': 'root',
+        'USER': 'Ali',
         'PASSWORD': 'alivampire2252',
     },
 }

@@ -19,6 +19,6 @@ from app.views import DataAPIView, thread_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('data/', DataAPIView.as_view()),
+    path('add/', DataAPIView.as_view()),
     path('moisture/', thread_view),
 ]

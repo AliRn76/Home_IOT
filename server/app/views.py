@@ -16,13 +16,14 @@ class DataAPIView(APIView):
 
     def post(self, request):
         # Serialize data
-        moisture = request.data.get("moisture")
-        temp = request.data.get("temp")
-        pressure = request.data.get("pressure")
-        humidity = request.data.get("humidity")
+        print("DATA:", request.data)
+        moisture = request.data.get("Moisture")
+        temp = request.data.get("Temp")
+        pressure = request.data.get("Pressure")
+        humidity = request.data.get("Humidity")
 
-        create_moisture = MoistureSensor.objects.create(moisture=moisture)
-        create_bme280 = Bme280Sensor.objects.create(temp=temp, pressure=pressure, humidity=humidity)
+        create_moisture = MoistureSensor.objects.create(moisture=int(moisture))
+        create_bme280 = Bme280Sensor.objects.create(temp=int(temp), pressure=int(pressure), humidity=int(humidity))
         create_moisture_response = create_moisture.save()
         create_bme280_response = create_bme280.save()
         print(create_moisture_response)
