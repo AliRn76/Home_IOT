@@ -9,7 +9,7 @@ class RequestProvider extends ChangeNotifier{
 
   RequestProvider(){}
 
-  Data _data;
+  Data _data = Data(0, 0, 0, 0);
 
   Data get data => _data;
 
